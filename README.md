@@ -9,10 +9,9 @@ Dane pobierane są z Spotify Web API z użyciem biblioteki Spotipy.
 ## Funkcjonalności
 
 - Pobieranie danych o zapisanych utworach użytkownika  
-- Zbieranie cech audio utworów (tempo, energia, taneczność itp.)  
 - Pobieranie informacji o wykonawcach  
 - Budowa katalogu muzycznego w formacie CSV  
-- (planowane) moduł rekomendacyjny porównujący dwa podejścia:  
+- Moduł rekomendacyjny porównujący dwa podejścia:  
   - rekomendacje na podstawie historii odtwarzania  
   - rekomendacje na podstawie zadeklarowanych preferencji użytkownika  
 
@@ -27,6 +26,8 @@ Dane pobierane są z Spotify Web API z użyciem biblioteki Spotipy.
   - pandas  
   - numpy  
   - scikit-learn  
+  - python-dotenv  
+  - tqdm  
 
 ---
 
@@ -127,18 +128,6 @@ Powstanie raport `recs_report.html` oraz `recs_report.xlsx` w katalogu `data/pro
 
 ```bash
 python src/create_playlists.py
-```
-
----
-
-## Przykładowy wynik
-
-Fragment pliku `catalog.csv`:
-
-```
-track_id    name        artist      danceability    energy  tempo
-3n3Ppam7vgaVa1iaRUc9Lp  Something   The Beatles     0.67    0.55   120.5
-...         ...         ...         ...             ...     ...
 ```
 
 ---
