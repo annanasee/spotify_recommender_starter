@@ -1,6 +1,21 @@
-.venv/
-.env
-.cache
-.cache-spotify
+# Python / venv / cache
 __pycache__/
 *.pyc
+.venv/
+env/
+venv/
+
+# IDE / OS
+.vscode/
+.DS_Store
+
+# Secrets & cache
+.env
+.cache*
+.cache-spotify
+
+# Data (zostawiamy tylko puste katalogi z .gitkeep)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
