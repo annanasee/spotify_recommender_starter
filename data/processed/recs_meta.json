@@ -1,0 +1,46 @@
+{
+  "seeds_history": {
+    "artist_ids": [
+      "5ReEaUoPEJMxR0hefo2QZ4",
+      "48aqzGnSFeO0t4FKTGmq72",
+      "25rSPSJSC2g85FSgBuV8SE",
+      "5oJvmyeWzyeahRtjup3Oys",
+      "2KcuDXfSU3CCEuC85IO8e6",
+      "6EB8VE9f7Ut6NOgviN6gDW",
+      "2CpLIMBoE2ZzyY3ZBCRZ7j",
+      "6KJPsGYJN54GllYOKTleaj",
+      "3xksDFio6oCdauPR6UE4Aj",
+      "3hnbNJJnN1jFk3MmBvcn9Z",
+      "0418xhpb0MLi9OfTGiTRas",
+      "3YGQcI92cOYtFdYLHhTpax"
+    ]
+  },
+  "seeds_prefs": {
+    "artist_ids": [
+      "6EB8VE9f7Ut6NOgviN6gDW",
+      "2mNOoqXYY177q7TtuqJL9q",
+      "0PX2pq6qcOfKp3NQOJMGvz",
+      "75jzFWGzvtNIwV7xoAp0wg",
+      "1ElV1LPQsKmt6kuUjIBdHG",
+      "03y4yOxhLk6MDJ1bV424uO",
+      "6OFZSmtxDquMkX2XZJSN6y",
+      "4lAkDxZ9sgjZD3mDPRgM4B",
+      "7sxSSGqEv1mo7yXBqfX0Ja",
+      "2VhoJf6VdIoPnifnThy9UV",
+      "4HJnsUVBubdKJ2aV0sr48u",
+      "6u1e1yxbcOzQ96mQl2L6ta"
+    ]
+  },
+  "params": {
+    "SEEDS_HISTORY_MAX": 12,
+    "SEEDS_PREFS_MAX": 12,
+    "RELATED_PER_SEED": 12,
+    "TOP_PER_ARTIST": 6,
+    "TARGET_TRACKS": 150,
+    "MARKET": "PL"
+  },
+  "summary": {
+    "history_tracks": 50,
+    "prefs_tracks": 62
+  }
+}

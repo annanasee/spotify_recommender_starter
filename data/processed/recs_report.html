@@ -1,0 +1,2779 @@
+
+    <html><head><meta charset="utf-8"><title>Spotify Recs Report</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; }
+      h1 { margin-bottom: 0; }
+      .muted { color:#666; margin-top:4px; }
+      table { border-collapse: collapse; margin: 12px 0 24px 0; width: 100%; }
+      th, td { border: 1px solid #ddd; padding: 8px; }
+      th { background: #f7f7f7; text-align: left; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+      .section { margin: 24px 0; }
+      .pill { display:inline-block; background:#eef; border:1px solid #ccd; padding:2px 8px; border-radius:999px; margin-right:6px; }
+      .small { font-size: 12px; color:#444; }
+    </style>
+    </head>
+    <body>
+      <h1>Raport rekomendacji</h1>
+      <div class="muted small">Wygenerowano z CSV/JSON w data/processed</div>
+
+      <div class="section">
+        <h2>Podsumowanie</h2>
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>list</th>
+      <th>tracks</th>
+      <th>unique_artists</th>
+      <th>unique_genres</th>
+      <th>new_to_user_count</th>
+      <th>new_to_user_ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>history</td>
+      <td>50</td>
+      <td>22</td>
+      <td>8</td>
+      <td>50</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <td>prefs</td>
+      <td>62</td>
+      <td>28</td>
+      <td>7</td>
+      <td>62</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <td>overlap</td>
+      <td>6</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+
+      <div class="section grid">
+        <div>
+          <h3>Top artyści – Historia</h3>
+          <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>name</th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Soda</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>Dawid Podsiadło</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Kastuvas</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Danell Arma</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Aaron Hibell</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+        <div>
+          <h3>Top artyści – Preferencje</h3>
+          <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>name</th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PALASTIC</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>Lavern</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Dawid Podsiadło</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Nathan C</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>WITH U</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+      </div>
+
+      <div class="section grid">
+        <div>
+          <h3>Top gatunki – Historia</h3>
+          <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>genre</th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>slap house</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>stutter house</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>g-house</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>drum and bass</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>deep house</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+        <div>
+          <h3>Top gatunki – Preferencje</h3>
+          <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>genre</th>
+      <th>count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>deep house</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>stutter house</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>afro house</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>hypertechno</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>moombahton</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Lista – Historia</h2>
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>track_id</th>
+      <th>name</th>
+      <th>artist_id</th>
+      <th>artist_name</th>
+      <th>album</th>
+      <th>popularity</th>
+      <th>source</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>75n9WHWZAzhB59xSjIHly4</td>
+      <td>WACUKA</td>
+      <td>5oJvmyeWzyeahRtjup3Oys</td>
+      <td>AVAION</td>
+      <td>WACUKA</td>
+      <td>77</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>3zPco1u9i9bCjkG5pngR5t</td>
+      <td>Clouds</td>
+      <td>2CpLIMBoE2ZzyY3ZBCRZ7j</td>
+      <td>BUNT.</td>
+      <td>Levi Don't Do It</td>
+      <td>77</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>1r4gQdNHdAJfUpREI0ywiu</td>
+      <td>Spaces</td>
+      <td>2CpLIMBoE2ZzyY3ZBCRZ7j</td>
+      <td>BUNT.</td>
+      <td>Spaces</td>
+      <td>72</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4w3Uy4n1hfj1mx6ag7bII5</td>
+      <td>Save My Love (with Ellie Goulding & AVAION)</td>
+      <td>64KEffDW9EtZ1y2vBYgq8T</td>
+      <td>Marshmello</td>
+      <td>Save My Love (with Ellie Goulding & AVAION)</td>
+      <td>71</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>7A1QLN9c3uKeQdhp05o0jp</td>
+      <td>Best Day of My Life (BUNT. Version) (feat. Tom Odell)</td>
+      <td>2CpLIMBoE2ZzyY3ZBCRZ7j</td>
+      <td>BUNT.</td>
+      <td>Best Day of My Life (BUNT. Version) (feat. Tom Odell)</td>
+      <td>71</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>75HBVc7kJLjC2LlPc4ScfH</td>
+      <td>Sleepless</td>
+      <td>5oJvmyeWzyeahRtjup3Oys</td>
+      <td>AVAION</td>
+      <td>Sleepless</td>
+      <td>70</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>5sldxFuM496Xu7dt6r8Ckl</td>
+      <td>Other Side</td>
+      <td>5oJvmyeWzyeahRtjup3Oys</td>
+      <td>AVAION</td>
+      <td>Selfreflection</td>
+      <td>66</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>5XIAnKNsdUim7GQsekL3uE</td>
+      <td>Pięknie płyniesz</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Pięknie płyniesz</td>
+      <td>62</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>107Zf6E46a1ipHa3x5Nqlr</td>
+      <td>samoloty</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>tylko haj.</td>
+      <td>61</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>64F1Z2LAsf04V346A75hi1</td>
+      <td>I Ciebie też, bardzo (feat. Daria Zawiałow, Dawid Podsiadło & Vito Bambino)</td>
+      <td>6PE9YfygcKpsaMOqiBx6JG</td>
+      <td>Męskie Granie Orkiestra</td>
+      <td>I Ciebie też, bardzo (feat. Daria Zawiałow, Dawid Podsiadło & Vito Bambino)</td>
+      <td>61</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>1umGWOFESVhp1DuHlve2AB</td>
+      <td>Family Affair</td>
+      <td>3xksDFio6oCdauPR6UE4Aj</td>
+      <td>Danell Arma</td>
+      <td>Family Affair</td>
+      <td>60</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>48tI68zHn3r3uHmGxdkKDd</td>
+      <td>Pullin Up</td>
+      <td>3hnbNJJnN1jFk3MmBvcn9Z</td>
+      <td>Soda</td>
+      <td>Pullin Up</td>
+      <td>59</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>6g254BzxAtBlpi9wzDcAJ9</td>
+      <td>nadprzestrzenie</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>tylko haj.</td>
+      <td>58</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4l8xoLKkJXhqqfbWdXcs93</td>
+      <td>destroyer of worlds</td>
+      <td>6KJPsGYJN54GllYOKTleaj</td>
+      <td>Aaron Hibell</td>
+      <td>destroyer of worlds</td>
+      <td>58</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>452nTMj51Dt5P1sSn9bZoN</td>
+      <td>Phantom Liberty</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Lata Dwudzieste z kawałkiem</td>
+      <td>55</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>3lhVWN4MfWDv7X8FOaXubv</td>
+      <td>set me free - CamelPhat Remix</td>
+      <td>6KJPsGYJN54GllYOKTleaj</td>
+      <td>Aaron Hibell</td>
+      <td>set me free (CamelPhat Remix)</td>
+      <td>54</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>5teI32jGP95ScDQ1T6eKUd</td>
+      <td>i feel lost</td>
+      <td>6KJPsGYJN54GllYOKTleaj</td>
+      <td>Aaron Hibell</td>
+      <td>Astral Projection (Deluxe Edition)</td>
+      <td>53</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>24wT9mkalLcUIDt9rkpYJJ</td>
+      <td>Let You Down</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Lata Dwudzieste z kawałkiem</td>
+      <td>52</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>0uhCArdyRY5xUbjLOYKSWe</td>
+      <td>levitation</td>
+      <td>6KJPsGYJN54GllYOKTleaj</td>
+      <td>Aaron Hibell</td>
+      <td>Astral Projection (Deluxe Edition)</td>
+      <td>51</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>2sHa8ZvrwS2LZagaUM3FN5</td>
+      <td>Keep on Moving</td>
+      <td>48aqzGnSFeO0t4FKTGmq72</td>
+      <td>Kastuvas</td>
+      <td>Keep on Moving</td>
+      <td>50</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4aBBCz0zYR00xOI4BUJ36h</td>
+      <td>Maneater</td>
+      <td>3xksDFio6oCdauPR6UE4Aj</td>
+      <td>Danell Arma</td>
+      <td>Maneater</td>
+      <td>50</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>2ejzskGL33gsxrvp1A2kXA</td>
+      <td>All Good Things (Come to an End)</td>
+      <td>48aqzGnSFeO0t4FKTGmq72</td>
+      <td>Kastuvas</td>
+      <td>All Good Things (Come to an End)</td>
+      <td>48</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>2J5afrJqOyO5cfI2IpOUqH</td>
+      <td>Promiscuous</td>
+      <td>3xksDFio6oCdauPR6UE4Aj</td>
+      <td>Danell Arma</td>
+      <td>Promiscuous</td>
+      <td>47</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>6kN1zI8vNabpBSpYNMRv90</td>
+      <td>Amazing</td>
+      <td>3xksDFio6oCdauPR6UE4Aj</td>
+      <td>Danell Arma</td>
+      <td>Amazing</td>
+      <td>45</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>5N3miUm4C10nb8CXEFfmLZ</td>
+      <td>Die Slow</td>
+      <td>3hnbNJJnN1jFk3MmBvcn9Z</td>
+      <td>Soda</td>
+      <td>Die Slow</td>
+      <td>43</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>0gb173DX00lb5i42UHShCd</td>
+      <td>Nothing Breaks Like a Heart</td>
+      <td>3v6Ji4uoWtKRkhuDUaxi9n</td>
+      <td>Dynoro</td>
+      <td>Nothing Breaks Like a Heart</td>
+      <td>41</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>71CVGT21qJKNRb1YLG1qr3</td>
+      <td>Spectrum (Say My Name)</td>
+      <td>3YGQcI92cOYtFdYLHhTpax</td>
+      <td>Xd</td>
+      <td>Spectrum (Say My Name)</td>
+      <td>41</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>6iJ4hBQeCTMXKjq4gshwRw</td>
+      <td>Hate It Or Love It</td>
+      <td>48aqzGnSFeO0t4FKTGmq72</td>
+      <td>Kastuvas</td>
+      <td>Hate It Or Love It</td>
+      <td>40</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>5mOVyrTCACd2sHKXEFoRp7</td>
+      <td>Dubai</td>
+      <td>3YGQcI92cOYtFdYLHhTpax</td>
+      <td>Xd</td>
+      <td>Dubai</td>
+      <td>40</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>7lGIt6LxlQaG39BRjl03EB</td>
+      <td>seaside_demo</td>
+      <td>3YGQcI92cOYtFdYLHhTpax</td>
+      <td>Xd</td>
+      <td>seaside_demo</td>
+      <td>40</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>0w3ty7Z0P5iRVhDeVGyP5u</td>
+      <td>Club Bizarre</td>
+      <td>48aqzGnSFeO0t4FKTGmq72</td>
+      <td>Kastuvas</td>
+      <td>Club Bizarre</td>
+      <td>39</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>7rV0bkkOVM0qpVGDQngPk6</td>
+      <td>The Way I Are</td>
+      <td>2C53tNkcdWjM4R3xHVxBvS</td>
+      <td>KERTSCHER</td>
+      <td>The Way I Are</td>
+      <td>39</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>07zmhICJJYOJkdExLcZWNH</td>
+      <td>L'Amour Toujours</td>
+      <td>48aqzGnSFeO0t4FKTGmq72</td>
+      <td>Kastuvas</td>
+      <td>L'Amour Toujours</td>
+      <td>39</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>3t94dqPaa0Raxr1grbU2Sy</td>
+      <td>M5</td>
+      <td>3hnbNJJnN1jFk3MmBvcn9Z</td>
+      <td>Soda</td>
+      <td>M5</td>
+      <td>37</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4y3HR3nSM1v6rANgsjLOqT</td>
+      <td>Sexy Bitch</td>
+      <td>6Cubdky3Aaaaxc3sn5C32N</td>
+      <td>Kaan Pars</td>
+      <td>Sexy Bitch</td>
+      <td>36</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>3a4PtzMuxul2m82VtU20ij</td>
+      <td>Leave the Lights On</td>
+      <td>04xlDQ2RhoOYISsIcP7ia4</td>
+      <td>Twin</td>
+      <td>Leave the Lights On</td>
+      <td>35</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>7GBTsnaYYkvLoF5qtU1bxj</td>
+      <td>Numb - Techno</td>
+      <td>2BSpar5fkultsfTEgtRBpP</td>
+      <td>Hubbe</td>
+      <td>Numb (Techno)</td>
+      <td>34</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>3WUSRYzAjW2MkpVsW8ZjW1</td>
+      <td>Pullin Up (Extended)</td>
+      <td>3hnbNJJnN1jFk3MmBvcn9Z</td>
+      <td>Soda</td>
+      <td>Pullin Up (Extended)</td>
+      <td>34</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>0ZYMuqdogj6F6pAOMU3NRy</td>
+      <td>Toccata and Fugue in D Minor</td>
+      <td>0418xhpb0MLi9OfTGiTRas</td>
+      <td>FRHAD</td>
+      <td>Toccata and Fugue in D Minor</td>
+      <td>34</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>29tcHlSayj22bTKUsqjfuY</td>
+      <td>Vibration</td>
+      <td>0418xhpb0MLi9OfTGiTRas</td>
+      <td>FRHAD</td>
+      <td>Vibration</td>
+      <td>34</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>5g1UV9H2Vh1mRUQn7WBTah</td>
+      <td>I'm Back</td>
+      <td>3hnbNJJnN1jFk3MmBvcn9Z</td>
+      <td>Soda</td>
+      <td>I'm Back</td>
+      <td>33</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>3euxLm11bDqxXc4g43KVSq</td>
+      <td>Rock Star</td>
+      <td>0418xhpb0MLi9OfTGiTRas</td>
+      <td>FRHAD</td>
+      <td>Rock Star</td>
+      <td>33</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>116lB7ovYdbbVMTBdfHUVk</td>
+      <td>Tokyo Drift</td>
+      <td>1MgtqpwXzX3m8BkVWr5RQ5</td>
+      <td>LIMIC</td>
+      <td>Tokyo Drift</td>
+      <td>32</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4cjhH52zs9CSaeiHTWgaoY</td>
+      <td>Heart on Fire</td>
+      <td>3hnbNJJnN1jFk3MmBvcn9Z</td>
+      <td>Soda</td>
+      <td>Heart on Fire</td>
+      <td>31</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>1Rvq098ja7trBhh6pn7aHF</td>
+      <td>King of My Castle</td>
+      <td>3YGQcI92cOYtFdYLHhTpax</td>
+      <td>Xd</td>
+      <td>King of My Castle</td>
+      <td>31</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>5A4mQqpZ3buVHFQAcbiygc</td>
+      <td>Astronaut in the Ocean</td>
+      <td>5Unw6xhYZ2FmUZIY6iCAbY</td>
+      <td>SI US PLAU</td>
+      <td>Astronaut in the Ocean</td>
+      <td>19</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>6tXnL1hnAFI4sPIHDQkYhQ</td>
+      <td>Smack That</td>
+      <td>4sEcx9wubbX4TLdaCQTqGI</td>
+      <td>Malik</td>
+      <td>Smack That</td>
+      <td>19</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>2ArKaq2H8efuNzSOYcgZ32</td>
+      <td>Who's That Chick?</td>
+      <td>5EXlM2WBPw4fwTnDNazXxv</td>
+      <td>JKRS</td>
+      <td>Who's That Chick?</td>
+      <td>18</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>61jpF2w00fcPtRw9XbKxKS</td>
+      <td>Prrrum</td>
+      <td>0dm0kGiPyhp2mps5nutUUa</td>
+      <td>Fella</td>
+      <td>Prrrum</td>
+      <td>14</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>383J5SDxNijGGXrpVP3dhd</td>
+      <td>Down</td>
+      <td>25rSPSJSC2g85FSgBuV8SE</td>
+      <td>DV7</td>
+      <td>Down</td>
+      <td>10</td>
+      <td>seed_top</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+
+      <div class="section">
+        <h2>Lista – Preferencje</h2>
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>track_id</th>
+      <th>name</th>
+      <th>artist_id</th>
+      <th>artist_name</th>
+      <th>album</th>
+      <th>popularity</th>
+      <th>source</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>4SnuG111QPmgwRmlwhJ4Mg</td>
+      <td>Hold Me</td>
+      <td>03y4yOxhLk6MDJ1bV424uO</td>
+      <td>Lavern</td>
+      <td>Hold Me</td>
+      <td>71</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>6jTbKd7VnhCt5qxyWTdak7</td>
+      <td>Karibu</td>
+      <td>2VhoJf6VdIoPnifnThy9UV</td>
+      <td>WITH U</td>
+      <td>Karibu</td>
+      <td>69</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>7paRyIC5aRpiiYkiBnT39O</td>
+      <td>Higher Power</td>
+      <td>2ZRQcIgzPCVaT9XKhXZIzh</td>
+      <td>Gryffin</td>
+      <td>Higher Power</td>
+      <td>64</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>66BDXKHZOvvz4CwZovEMwH</td>
+      <td>Sunshine</td>
+      <td>03y4yOxhLk6MDJ1bV424uO</td>
+      <td>Lavern</td>
+      <td>Sunshine</td>
+      <td>64</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>1unlWf6dqVy71XhAdlMjH0</td>
+      <td>Nobody Knows - Belters Only Remix</td>
+      <td>4HJnsUVBubdKJ2aV0sr48u</td>
+      <td>Ape Drums</td>
+      <td>Nobody Knows (Belters Only Remix)</td>
+      <td>64</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>5XIAnKNsdUim7GQsekL3uE</td>
+      <td>Pięknie płyniesz</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Pięknie płyniesz</td>
+      <td>62</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>107Zf6E46a1ipHa3x5Nqlr</td>
+      <td>samoloty</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>tylko haj.</td>
+      <td>61</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>64F1Z2LAsf04V346A75hi1</td>
+      <td>I Ciebie też, bardzo (feat. Daria Zawiałow, Dawid Podsiadło & Vito Bambino)</td>
+      <td>6PE9YfygcKpsaMOqiBx6JG</td>
+      <td>Męskie Granie Orkiestra</td>
+      <td>I Ciebie też, bardzo (feat. Daria Zawiałow, Dawid Podsiadło & Vito Bambino)</td>
+      <td>61</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>34xhlfh5RUmx0AFf8dek9f</td>
+      <td>Souvenir</td>
+      <td>292jMVlKq180yzi8WRaVU6</td>
+      <td>7ari</td>
+      <td>101</td>
+      <td>61</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>0nC5DUHon23N4G3FRY48Ni</td>
+      <td>How Deep Is Your Love</td>
+      <td>2VhoJf6VdIoPnifnThy9UV</td>
+      <td>WITH U</td>
+      <td>How Deep Is Your Love</td>
+      <td>61</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>45c9wiUAAYRgbAnBcfPEsk</td>
+      <td>In My Mind</td>
+      <td>03y4yOxhLk6MDJ1bV424uO</td>
+      <td>Lavern</td>
+      <td>In My Mind</td>
+      <td>59</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4Wx54faWzcpENP6oEST3Fv</td>
+      <td>KOUDOUROU</td>
+      <td>2g8Pu5gVtDpkYGsP3RLepJ</td>
+      <td>Draganov</td>
+      <td>KOUDOUROU X BON COURAGE</td>
+      <td>59</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>6g254BzxAtBlpi9wzDcAJ9</td>
+      <td>nadprzestrzenie</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>tylko haj.</td>
+      <td>58</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>3NWRapFZSlpHXO38LW21rw</td>
+      <td>La leçon particulière</td>
+      <td>03y4yOxhLk6MDJ1bV424uO</td>
+      <td>Lavern</td>
+      <td>La leçon particulière</td>
+      <td>58</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>2aahxM4jGWFWgMzmHpelAR</td>
+      <td>Caught in a Dream</td>
+      <td>6OFZSmtxDquMkX2XZJSN6y</td>
+      <td>PALASTIC</td>
+      <td>Caught in a Dream</td>
+      <td>58</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>7jNnW7e1prkMtR7EKsTElp</td>
+      <td>Price</td>
+      <td>6OFZSmtxDquMkX2XZJSN6y</td>
+      <td>PALASTIC</td>
+      <td>Price</td>
+      <td>58</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>3JhpsFR2yZhprzqXuzwGqj</td>
+      <td>In Love Today</td>
+      <td>6mDl7lQiLxT0iQ8LYhAlWy</td>
+      <td>Zerb</td>
+      <td>In Love Today</td>
+      <td>58</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>5lebcpNhPX5sAPUjKyyYgY</td>
+      <td>All I Want Is You</td>
+      <td>03y4yOxhLk6MDJ1bV424uO</td>
+      <td>Lavern</td>
+      <td>All I Want Is You</td>
+      <td>57</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>5CTWar6EERdWazrPD2giMp</td>
+      <td>Heaven</td>
+      <td>6OFZSmtxDquMkX2XZJSN6y</td>
+      <td>PALASTIC</td>
+      <td>Heaven</td>
+      <td>56</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>7iIzan4uOlOeXZ8iE3b91F</td>
+      <td>Wildfire</td>
+      <td>6OFZSmtxDquMkX2XZJSN6y</td>
+      <td>PALASTIC</td>
+      <td>Wildfire</td>
+      <td>56</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>6pv5Ajnc2fp12ilnkD5Xrr</td>
+      <td>Like Dat - Ape Drums Remix</td>
+      <td>0iuUN6j3vMee2NUjkFJDF3</td>
+      <td>Danidane</td>
+      <td>Like Dat (Ape Drums Remix)</td>
+      <td>56</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>0UPTkIZR45UaYchMgaVMAs</td>
+      <td>Anything (Ya Ya)</td>
+      <td>4Fx9JQTrRogacwiF4Drhoy</td>
+      <td>Ginton</td>
+      <td>Anything (Ya Ya)</td>
+      <td>56</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>452nTMj51Dt5P1sSn9bZoN</td>
+      <td>Phantom Liberty</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Lata Dwudzieste z kawałkiem</td>
+      <td>55</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>1QMdUrpO1rr0aXtjksMRLs</td>
+      <td>Down To Earth (2012)</td>
+      <td>7dToZgn1tZjiCKeT1y60zw</td>
+      <td>Hunter Plake</td>
+      <td>Down To Earth (2012)</td>
+      <td>55</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>5xan7XL4YNpsAOL7LhXUPb</td>
+      <td>The Darkside</td>
+      <td>6OFZSmtxDquMkX2XZJSN6y</td>
+      <td>PALASTIC</td>
+      <td>The Darkside</td>
+      <td>55</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4vv8wcnT04GHHbUCFBAiHF</td>
+      <td>23 (With Ape Drums)</td>
+      <td>7qYeIN2r4H1kBvr0Gm9Iav</td>
+      <td>Randy Nota Loca</td>
+      <td>Romances de una Nota 2021, Vol.2</td>
+      <td>55</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>3vF2wvLHg3QK1MwqeiUOUb</td>
+      <td>Nobody Knows</td>
+      <td>4HJnsUVBubdKJ2aV0sr48u</td>
+      <td>Ape Drums</td>
+      <td>Nobody Knows</td>
+      <td>54</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>1ZXtVE7Orb5JnUWT06Oqwo</td>
+      <td>Too Heavy</td>
+      <td>1ElV1LPQsKmt6kuUjIBdHG</td>
+      <td>Neon Tide</td>
+      <td>Too Heavy</td>
+      <td>53</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>24wT9mkalLcUIDt9rkpYJJ</td>
+      <td>Let You Down</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Lata Dwudzieste z kawałkiem</td>
+      <td>52</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>0GPtVF1UqnrO0kro91AhyM</td>
+      <td>Koulchi Dial Allah</td>
+      <td>292jMVlKq180yzi8WRaVU6</td>
+      <td>7ari</td>
+      <td>101</td>
+      <td>52</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>3xhWhuMQs7X7nGLwKW0XEE</td>
+      <td>Silence</td>
+      <td>2VhoJf6VdIoPnifnThy9UV</td>
+      <td>WITH U</td>
+      <td>Silence</td>
+      <td>52</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>2PkcJdAVlbQCnqoZjYo8JC</td>
+      <td>Try</td>
+      <td>2VhoJf6VdIoPnifnThy9UV</td>
+      <td>WITH U</td>
+      <td>Try</td>
+      <td>52</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>5wH0qTIhsK8aSKWs6IAY61</td>
+      <td>In & Out</td>
+      <td>2mNOoqXYY177q7TtuqJL9q</td>
+      <td>Nathan C</td>
+      <td>In & Out</td>
+      <td>51</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4pJF7MrSiXtjthcEqB1aEJ</td>
+      <td>Need A Second</td>
+      <td>2mNOoqXYY177q7TtuqJL9q</td>
+      <td>Nathan C</td>
+      <td>Need A Second</td>
+      <td>51</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>6wQaKs1COnCnqPIsIKsccx</td>
+      <td>Fall Back Down</td>
+      <td>6OFZSmtxDquMkX2XZJSN6y</td>
+      <td>PALASTIC</td>
+      <td>Fall Back Down</td>
+      <td>51</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>5FyrOaDON6T8au7Xv8M5lr</td>
+      <td>Wad Al Makhazin</td>
+      <td>292jMVlKq180yzi8WRaVU6</td>
+      <td>7ari</td>
+      <td>101</td>
+      <td>51</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>6wpj0XOOx9rJkoNYCv2d7i</td>
+      <td>ENA VRADI</td>
+      <td>1LxWE4LOhnqeaAx2tVUK6p</td>
+      <td>Saske</td>
+      <td>ENA VRADI</td>
+      <td>49</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4dsbLVnLqTavINHInT4hCo</td>
+      <td>Bittersweet</td>
+      <td>2mNOoqXYY177q7TtuqJL9q</td>
+      <td>Nathan C</td>
+      <td>Bittersweet</td>
+      <td>48</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>2yejwvLnmVFtwrMQlaRWgP</td>
+      <td>El Dorado</td>
+      <td>7fQllKIlkVSl9JD1aJ8XYg</td>
+      <td>HotLap</td>
+      <td>El Dorado</td>
+      <td>48</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>5yigqYGqlknz6tQ7b7FGbZ</td>
+      <td>Depression</td>
+      <td>292jMVlKq180yzi8WRaVU6</td>
+      <td>7ari</td>
+      <td>101</td>
+      <td>48</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4NkHMtDWqqfU9snFt7Ae6j</td>
+      <td>Get Through This</td>
+      <td>2mNOoqXYY177q7TtuqJL9q</td>
+      <td>Nathan C</td>
+      <td>Get Through This</td>
+      <td>47</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4GYO06wf3VU43VzgRevxU2</td>
+      <td>Changes</td>
+      <td>2mNOoqXYY177q7TtuqJL9q</td>
+      <td>Nathan C</td>
+      <td>Changes</td>
+      <td>46</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>3mbtXrQE7zVMtm1dHvrWHk</td>
+      <td>PERMISSION TO MOVE</td>
+      <td>4lAkDxZ9sgjZD3mDPRgM4B</td>
+      <td>UVITA</td>
+      <td>PERMISSION TO MOVE</td>
+      <td>45</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>7Cl5ITyEbFN7f2Y3YzfGTY</td>
+      <td>No Way Out</td>
+      <td>6qrKiEKVVelbXJa8HwchwO</td>
+      <td>OSFUR</td>
+      <td>No Way Out</td>
+      <td>44</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>3wgC5bBD5Iq8iEubEBkqZx</td>
+      <td>Wale Wale (feat. Sofiya Nzau) [WITH U Remix Radio Edit]</td>
+      <td>5tYaRVYbV1anmzyxqMVdHi</td>
+      <td>TRESOR</td>
+      <td>New title: Wale Wale (feat. Sofiya Nzau) [WITH U Remix]</td>
+      <td>43</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4N70Hwcdft6RxkdUzkX70s</td>
+      <td>Through This</td>
+      <td>75jzFWGzvtNIwV7xoAp0wg</td>
+      <td>Julien Fade</td>
+      <td>Through This</td>
+      <td>42</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4uKulth6B1icBKdUQlQZhd</td>
+      <td>More Than Ever (Umbrella)</td>
+      <td>0PX2pq6qcOfKp3NQOJMGvz</td>
+      <td>LEDUC</td>
+      <td>More Than Ever (Umbrella)</td>
+      <td>41</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>3R6SkVU0glY6NQxBdEQK0R</td>
+      <td>Pieces</td>
+      <td>6qrKiEKVVelbXJa8HwchwO</td>
+      <td>OSFUR</td>
+      <td>Pieces</td>
+      <td>41</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>6fcze2Re7NG53tNsEF3WXi</td>
+      <td>AGAMA</td>
+      <td>6qrKiEKVVelbXJa8HwchwO</td>
+      <td>OSFUR</td>
+      <td>AGAMA EP</td>
+      <td>41</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>2KuQ9Au4R0WasDJ8fDRHxT</td>
+      <td>Shelter</td>
+      <td>7fQllKIlkVSl9JD1aJ8XYg</td>
+      <td>HotLap</td>
+      <td>Shelter</td>
+      <td>40</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>5YFCJLeAFafkrCTTNalrdt</td>
+      <td>Bad Ones</td>
+      <td>75jzFWGzvtNIwV7xoAp0wg</td>
+      <td>Julien Fade</td>
+      <td>Bad Ones</td>
+      <td>38</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>094ytaIC90FNjxPFpdgcHP</td>
+      <td>What If We Let Go (feat. Sam Welch)</td>
+      <td>0PX2pq6qcOfKp3NQOJMGvz</td>
+      <td>LEDUC</td>
+      <td>What If We Let Go (feat. Sam Welch)</td>
+      <td>37</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4BPoI4ettn5McqYyo3iQlg</td>
+      <td>Jump - Julien Fade Remix</td>
+      <td>4KX7yEwPVJikSK6wLjgUJF</td>
+      <td>SAY SAY</td>
+      <td>Jump (Julien Fade Remix)</td>
+      <td>33</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>2ftN0Aikomqttb2hBJUHSW</td>
+      <td>Give Me Your Love</td>
+      <td>0PX2pq6qcOfKp3NQOJMGvz</td>
+      <td>LEDUC</td>
+      <td>Give Me Your Love</td>
+      <td>31</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>6sng1g313Na1A1jjcqtSqg</td>
+      <td>Overdrive (feat. Jordan Jade)</td>
+      <td>75jzFWGzvtNIwV7xoAp0wg</td>
+      <td>Julien Fade</td>
+      <td>Overdrive (feat. Jordan Jade)</td>
+      <td>31</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4naOLliMqRMOcfEOBJ1jAP</td>
+      <td>Zauberland</td>
+      <td>6HU4BOe89xyKTjx5uPT3Gg</td>
+      <td>Pazoo</td>
+      <td>Zauberland</td>
+      <td>31</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>2jTmrwt6SiQ3yvFg2BVqw3</td>
+      <td>Siyaphakama!</td>
+      <td>6u1e1yxbcOzQ96mQl2L6ta</td>
+      <td>MUPHUS</td>
+      <td>Siyaphakama!</td>
+      <td>30</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>4IC7K23iJBGfUsu2oEwZ5T</td>
+      <td>Letzte Nacht!</td>
+      <td>6u1e1yxbcOzQ96mQl2L6ta</td>
+      <td>MUPHUS</td>
+      <td>Letzte Nacht!</td>
+      <td>29</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>7hthlUwN9J31cP7XVMPML1</td>
+      <td>Light Me Up</td>
+      <td>0PX2pq6qcOfKp3NQOJMGvz</td>
+      <td>LEDUC</td>
+      <td>Light Me Up</td>
+      <td>28</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>6bBFT3o03EUiwh9izY8SnF</td>
+      <td>Wait for You</td>
+      <td>6u1e1yxbcOzQ96mQl2L6ta</td>
+      <td>MUPHUS</td>
+      <td>Wait for You</td>
+      <td>15</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>63GVWi6kSsHgolSLqxp2tV</td>
+      <td>Iris</td>
+      <td>7t9AgfG4UBcFL6lEkfQi6h</td>
+      <td>Buamz</td>
+      <td>Iris</td>
+      <td>14</td>
+      <td>seed_top</td>
+    </tr>
+    <tr>
+      <td>6oxZG0GdwFctktW60tnzX8</td>
+      <td>Ghost Of You - LEDUC Remix</td>
+      <td>5SOSqzQyhsHTTuxAMGPkaO</td>
+      <td>BUTTER</td>
+      <td>Ghost Of You (LEDUC Remix)</td>
+      <td>13</td>
+      <td>seed_top</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+
+      <div class="section">
+        <h2>Wspólne utwory (overlap)</h2>
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>track_id</th>
+      <th>name</th>
+      <th>artist_id</th>
+      <th>artist_name</th>
+      <th>album</th>
+      <th>popularity</th>
+      <th>source</th>
+      <th>which</th>
+      <th>in_catalog</th>
+      <th>genres_join</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>5XIAnKNsdUim7GQsekL3uE</td>
+      <td>Pięknie płyniesz</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Pięknie płyniesz</td>
+      <td>62</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>107Zf6E46a1ipHa3x5Nqlr</td>
+      <td>samoloty</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>tylko haj.</td>
+      <td>61</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>64F1Z2LAsf04V346A75hi1</td>
+      <td>I Ciebie też, bardzo (feat. Daria Zawiałow, Dawid Podsiadło & Vito Bambino)</td>
+      <td>6PE9YfygcKpsaMOqiBx6JG</td>
+      <td>Męskie Granie Orkiestra</td>
+      <td>I Ciebie też, bardzo (feat. Daria Zawiałow, Dawid Podsiadło & Vito Bambino)</td>
+      <td>61</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>6g254BzxAtBlpi9wzDcAJ9</td>
+      <td>nadprzestrzenie</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>tylko haj.</td>
+      <td>58</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>452nTMj51Dt5P1sSn9bZoN</td>
+      <td>Phantom Liberty</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Lata Dwudzieste z kawałkiem</td>
+      <td>55</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>24wT9mkalLcUIDt9rkpYJJ</td>
+      <td>Let You Down</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Lata Dwudzieste z kawałkiem</td>
+      <td>52</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>5XIAnKNsdUim7GQsekL3uE</td>
+      <td>Pięknie płyniesz</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Pięknie płyniesz</td>
+      <td>62</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>107Zf6E46a1ipHa3x5Nqlr</td>
+      <td>samoloty</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>tylko haj.</td>
+      <td>61</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>64F1Z2LAsf04V346A75hi1</td>
+      <td>I Ciebie też, bardzo (feat. Daria Zawiałow, Dawid Podsiadło & Vito Bambino)</td>
+      <td>6PE9YfygcKpsaMOqiBx6JG</td>
+      <td>Męskie Granie Orkiestra</td>
+      <td>I Ciebie też, bardzo (feat. Daria Zawiałow, Dawid Podsiadło & Vito Bambino)</td>
+      <td>61</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>6g254BzxAtBlpi9wzDcAJ9</td>
+      <td>nadprzestrzenie</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>tylko haj.</td>
+      <td>58</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>452nTMj51Dt5P1sSn9bZoN</td>
+      <td>Phantom Liberty</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Lata Dwudzieste z kawałkiem</td>
+      <td>55</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>24wT9mkalLcUIDt9rkpYJJ</td>
+      <td>Let You Down</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Lata Dwudzieste z kawałkiem</td>
+      <td>52</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+
+      <div class="section">
+        <h2>Szczegóły (scalone)</h2>
+        <div class="small muted">Zawiera flagi: which, in_catalog, genres_join</div>
+        <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>track_id</th>
+      <th>name</th>
+      <th>artist_id</th>
+      <th>artist_name</th>
+      <th>album</th>
+      <th>popularity</th>
+      <th>source</th>
+      <th>which</th>
+      <th>in_catalog</th>
+      <th>genres_join</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>75n9WHWZAzhB59xSjIHly4</td>
+      <td>WACUKA</td>
+      <td>5oJvmyeWzyeahRtjup3Oys</td>
+      <td>AVAION</td>
+      <td>WACUKA</td>
+      <td>77</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>deep house, stutter house</td>
+    </tr>
+    <tr>
+      <td>3zPco1u9i9bCjkG5pngR5t</td>
+      <td>Clouds</td>
+      <td>2CpLIMBoE2ZzyY3ZBCRZ7j</td>
+      <td>BUNT.</td>
+      <td>Levi Don't Do It</td>
+      <td>77</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>1r4gQdNHdAJfUpREI0ywiu</td>
+      <td>Spaces</td>
+      <td>2CpLIMBoE2ZzyY3ZBCRZ7j</td>
+      <td>BUNT.</td>
+      <td>Spaces</td>
+      <td>72</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>4w3Uy4n1hfj1mx6ag7bII5</td>
+      <td>Save My Love (with Ellie Goulding & AVAION)</td>
+      <td>64KEffDW9EtZ1y2vBYgq8T</td>
+      <td>Marshmello</td>
+      <td>Save My Love (with Ellie Goulding & AVAION)</td>
+      <td>71</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>edm</td>
+    </tr>
+    <tr>
+      <td>7A1QLN9c3uKeQdhp05o0jp</td>
+      <td>Best Day of My Life (BUNT. Version) (feat. Tom Odell)</td>
+      <td>2CpLIMBoE2ZzyY3ZBCRZ7j</td>
+      <td>BUNT.</td>
+      <td>Best Day of My Life (BUNT. Version) (feat. Tom Odell)</td>
+      <td>71</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>75HBVc7kJLjC2LlPc4ScfH</td>
+      <td>Sleepless</td>
+      <td>5oJvmyeWzyeahRtjup3Oys</td>
+      <td>AVAION</td>
+      <td>Sleepless</td>
+      <td>70</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>deep house, stutter house</td>
+    </tr>
+    <tr>
+      <td>5sldxFuM496Xu7dt6r8Ckl</td>
+      <td>Other Side</td>
+      <td>5oJvmyeWzyeahRtjup3Oys</td>
+      <td>AVAION</td>
+      <td>Selfreflection</td>
+      <td>66</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>deep house, stutter house</td>
+    </tr>
+    <tr>
+      <td>5XIAnKNsdUim7GQsekL3uE</td>
+      <td>Pięknie płyniesz</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Pięknie płyniesz</td>
+      <td>62</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>107Zf6E46a1ipHa3x5Nqlr</td>
+      <td>samoloty</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>tylko haj.</td>
+      <td>61</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>64F1Z2LAsf04V346A75hi1</td>
+      <td>I Ciebie też, bardzo (feat. Daria Zawiałow, Dawid Podsiadło & Vito Bambino)</td>
+      <td>6PE9YfygcKpsaMOqiBx6JG</td>
+      <td>Męskie Granie Orkiestra</td>
+      <td>I Ciebie też, bardzo (feat. Daria Zawiałow, Dawid Podsiadło & Vito Bambino)</td>
+      <td>61</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>1umGWOFESVhp1DuHlve2AB</td>
+      <td>Family Affair</td>
+      <td>3xksDFio6oCdauPR6UE4Aj</td>
+      <td>Danell Arma</td>
+      <td>Family Affair</td>
+      <td>60</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house</td>
+    </tr>
+    <tr>
+      <td>48tI68zHn3r3uHmGxdkKDd</td>
+      <td>Pullin Up</td>
+      <td>3hnbNJJnN1jFk3MmBvcn9Z</td>
+      <td>Soda</td>
+      <td>Pullin Up</td>
+      <td>59</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>g-house</td>
+    </tr>
+    <tr>
+      <td>6g254BzxAtBlpi9wzDcAJ9</td>
+      <td>nadprzestrzenie</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>tylko haj.</td>
+      <td>58</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>4l8xoLKkJXhqqfbWdXcs93</td>
+      <td>destroyer of worlds</td>
+      <td>6KJPsGYJN54GllYOKTleaj</td>
+      <td>Aaron Hibell</td>
+      <td>destroyer of worlds</td>
+      <td>58</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>452nTMj51Dt5P1sSn9bZoN</td>
+      <td>Phantom Liberty</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Lata Dwudzieste z kawałkiem</td>
+      <td>55</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>3lhVWN4MfWDv7X8FOaXubv</td>
+      <td>set me free - CamelPhat Remix</td>
+      <td>6KJPsGYJN54GllYOKTleaj</td>
+      <td>Aaron Hibell</td>
+      <td>set me free (CamelPhat Remix)</td>
+      <td>54</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>5teI32jGP95ScDQ1T6eKUd</td>
+      <td>i feel lost</td>
+      <td>6KJPsGYJN54GllYOKTleaj</td>
+      <td>Aaron Hibell</td>
+      <td>Astral Projection (Deluxe Edition)</td>
+      <td>53</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>24wT9mkalLcUIDt9rkpYJJ</td>
+      <td>Let You Down</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Lata Dwudzieste z kawałkiem</td>
+      <td>52</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>0uhCArdyRY5xUbjLOYKSWe</td>
+      <td>levitation</td>
+      <td>6KJPsGYJN54GllYOKTleaj</td>
+      <td>Aaron Hibell</td>
+      <td>Astral Projection (Deluxe Edition)</td>
+      <td>51</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>2sHa8ZvrwS2LZagaUM3FN5</td>
+      <td>Keep on Moving</td>
+      <td>48aqzGnSFeO0t4FKTGmq72</td>
+      <td>Kastuvas</td>
+      <td>Keep on Moving</td>
+      <td>50</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house, drum and bass</td>
+    </tr>
+    <tr>
+      <td>4aBBCz0zYR00xOI4BUJ36h</td>
+      <td>Maneater</td>
+      <td>3xksDFio6oCdauPR6UE4Aj</td>
+      <td>Danell Arma</td>
+      <td>Maneater</td>
+      <td>50</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house</td>
+    </tr>
+    <tr>
+      <td>2ejzskGL33gsxrvp1A2kXA</td>
+      <td>All Good Things (Come to an End)</td>
+      <td>48aqzGnSFeO0t4FKTGmq72</td>
+      <td>Kastuvas</td>
+      <td>All Good Things (Come to an End)</td>
+      <td>48</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house, drum and bass</td>
+    </tr>
+    <tr>
+      <td>2J5afrJqOyO5cfI2IpOUqH</td>
+      <td>Promiscuous</td>
+      <td>3xksDFio6oCdauPR6UE4Aj</td>
+      <td>Danell Arma</td>
+      <td>Promiscuous</td>
+      <td>47</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house</td>
+    </tr>
+    <tr>
+      <td>6kN1zI8vNabpBSpYNMRv90</td>
+      <td>Amazing</td>
+      <td>3xksDFio6oCdauPR6UE4Aj</td>
+      <td>Danell Arma</td>
+      <td>Amazing</td>
+      <td>45</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house</td>
+    </tr>
+    <tr>
+      <td>5N3miUm4C10nb8CXEFfmLZ</td>
+      <td>Die Slow</td>
+      <td>3hnbNJJnN1jFk3MmBvcn9Z</td>
+      <td>Soda</td>
+      <td>Die Slow</td>
+      <td>43</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>g-house</td>
+    </tr>
+    <tr>
+      <td>0gb173DX00lb5i42UHShCd</td>
+      <td>Nothing Breaks Like a Heart</td>
+      <td>3v6Ji4uoWtKRkhuDUaxi9n</td>
+      <td>Dynoro</td>
+      <td>Nothing Breaks Like a Heart</td>
+      <td>41</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>71CVGT21qJKNRb1YLG1qr3</td>
+      <td>Spectrum (Say My Name)</td>
+      <td>3YGQcI92cOYtFdYLHhTpax</td>
+      <td>Xd</td>
+      <td>Spectrum (Say My Name)</td>
+      <td>41</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house</td>
+    </tr>
+    <tr>
+      <td>6iJ4hBQeCTMXKjq4gshwRw</td>
+      <td>Hate It Or Love It</td>
+      <td>48aqzGnSFeO0t4FKTGmq72</td>
+      <td>Kastuvas</td>
+      <td>Hate It Or Love It</td>
+      <td>40</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house, drum and bass</td>
+    </tr>
+    <tr>
+      <td>5mOVyrTCACd2sHKXEFoRp7</td>
+      <td>Dubai</td>
+      <td>3YGQcI92cOYtFdYLHhTpax</td>
+      <td>Xd</td>
+      <td>Dubai</td>
+      <td>40</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house</td>
+    </tr>
+    <tr>
+      <td>7lGIt6LxlQaG39BRjl03EB</td>
+      <td>seaside_demo</td>
+      <td>3YGQcI92cOYtFdYLHhTpax</td>
+      <td>Xd</td>
+      <td>seaside_demo</td>
+      <td>40</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house</td>
+    </tr>
+    <tr>
+      <td>0w3ty7Z0P5iRVhDeVGyP5u</td>
+      <td>Club Bizarre</td>
+      <td>48aqzGnSFeO0t4FKTGmq72</td>
+      <td>Kastuvas</td>
+      <td>Club Bizarre</td>
+      <td>39</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house, drum and bass</td>
+    </tr>
+    <tr>
+      <td>7rV0bkkOVM0qpVGDQngPk6</td>
+      <td>The Way I Are</td>
+      <td>2C53tNkcdWjM4R3xHVxBvS</td>
+      <td>KERTSCHER</td>
+      <td>The Way I Are</td>
+      <td>39</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house</td>
+    </tr>
+    <tr>
+      <td>07zmhICJJYOJkdExLcZWNH</td>
+      <td>L'Amour Toujours</td>
+      <td>48aqzGnSFeO0t4FKTGmq72</td>
+      <td>Kastuvas</td>
+      <td>L'Amour Toujours</td>
+      <td>39</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house, drum and bass</td>
+    </tr>
+    <tr>
+      <td>3t94dqPaa0Raxr1grbU2Sy</td>
+      <td>M5</td>
+      <td>3hnbNJJnN1jFk3MmBvcn9Z</td>
+      <td>Soda</td>
+      <td>M5</td>
+      <td>37</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>g-house</td>
+    </tr>
+    <tr>
+      <td>4y3HR3nSM1v6rANgsjLOqT</td>
+      <td>Sexy Bitch</td>
+      <td>6Cubdky3Aaaaxc3sn5C32N</td>
+      <td>Kaan Pars</td>
+      <td>Sexy Bitch</td>
+      <td>36</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>3a4PtzMuxul2m82VtU20ij</td>
+      <td>Leave the Lights On</td>
+      <td>04xlDQ2RhoOYISsIcP7ia4</td>
+      <td>Twin</td>
+      <td>Leave the Lights On</td>
+      <td>35</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>7GBTsnaYYkvLoF5qtU1bxj</td>
+      <td>Numb - Techno</td>
+      <td>2BSpar5fkultsfTEgtRBpP</td>
+      <td>Hubbe</td>
+      <td>Numb (Techno)</td>
+      <td>34</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>3WUSRYzAjW2MkpVsW8ZjW1</td>
+      <td>Pullin Up (Extended)</td>
+      <td>3hnbNJJnN1jFk3MmBvcn9Z</td>
+      <td>Soda</td>
+      <td>Pullin Up (Extended)</td>
+      <td>34</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>g-house</td>
+    </tr>
+    <tr>
+      <td>0ZYMuqdogj6F6pAOMU3NRy</td>
+      <td>Toccata and Fugue in D Minor</td>
+      <td>0418xhpb0MLi9OfTGiTRas</td>
+      <td>FRHAD</td>
+      <td>Toccata and Fugue in D Minor</td>
+      <td>34</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>g-house</td>
+    </tr>
+    <tr>
+      <td>29tcHlSayj22bTKUsqjfuY</td>
+      <td>Vibration</td>
+      <td>0418xhpb0MLi9OfTGiTRas</td>
+      <td>FRHAD</td>
+      <td>Vibration</td>
+      <td>34</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>g-house</td>
+    </tr>
+    <tr>
+      <td>5g1UV9H2Vh1mRUQn7WBTah</td>
+      <td>I'm Back</td>
+      <td>3hnbNJJnN1jFk3MmBvcn9Z</td>
+      <td>Soda</td>
+      <td>I'm Back</td>
+      <td>33</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>g-house</td>
+    </tr>
+    <tr>
+      <td>3euxLm11bDqxXc4g43KVSq</td>
+      <td>Rock Star</td>
+      <td>0418xhpb0MLi9OfTGiTRas</td>
+      <td>FRHAD</td>
+      <td>Rock Star</td>
+      <td>33</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>g-house</td>
+    </tr>
+    <tr>
+      <td>116lB7ovYdbbVMTBdfHUVk</td>
+      <td>Tokyo Drift</td>
+      <td>1MgtqpwXzX3m8BkVWr5RQ5</td>
+      <td>LIMIC</td>
+      <td>Tokyo Drift</td>
+      <td>32</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>4cjhH52zs9CSaeiHTWgaoY</td>
+      <td>Heart on Fire</td>
+      <td>3hnbNJJnN1jFk3MmBvcn9Z</td>
+      <td>Soda</td>
+      <td>Heart on Fire</td>
+      <td>31</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>g-house</td>
+    </tr>
+    <tr>
+      <td>1Rvq098ja7trBhh6pn7aHF</td>
+      <td>King of My Castle</td>
+      <td>3YGQcI92cOYtFdYLHhTpax</td>
+      <td>Xd</td>
+      <td>King of My Castle</td>
+      <td>31</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house</td>
+    </tr>
+    <tr>
+      <td>5A4mQqpZ3buVHFQAcbiygc</td>
+      <td>Astronaut in the Ocean</td>
+      <td>5Unw6xhYZ2FmUZIY6iCAbY</td>
+      <td>SI US PLAU</td>
+      <td>Astronaut in the Ocean</td>
+      <td>19</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house</td>
+    </tr>
+    <tr>
+      <td>6tXnL1hnAFI4sPIHDQkYhQ</td>
+      <td>Smack That</td>
+      <td>4sEcx9wubbX4TLdaCQTqGI</td>
+      <td>Malik</td>
+      <td>Smack That</td>
+      <td>19</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2ArKaq2H8efuNzSOYcgZ32</td>
+      <td>Who's That Chick?</td>
+      <td>5EXlM2WBPw4fwTnDNazXxv</td>
+      <td>JKRS</td>
+      <td>Who's That Chick?</td>
+      <td>18</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>hypertechno, techno</td>
+    </tr>
+    <tr>
+      <td>61jpF2w00fcPtRw9XbKxKS</td>
+      <td>Prrrum</td>
+      <td>0dm0kGiPyhp2mps5nutUUa</td>
+      <td>Fella</td>
+      <td>Prrrum</td>
+      <td>14</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>383J5SDxNijGGXrpVP3dhd</td>
+      <td>Down</td>
+      <td>25rSPSJSC2g85FSgBuV8SE</td>
+      <td>DV7</td>
+      <td>Down</td>
+      <td>10</td>
+      <td>seed_top</td>
+      <td>history</td>
+      <td>False</td>
+      <td>slap house</td>
+    </tr>
+    <tr>
+      <td>4SnuG111QPmgwRmlwhJ4Mg</td>
+      <td>Hold Me</td>
+      <td>03y4yOxhLk6MDJ1bV424uO</td>
+      <td>Lavern</td>
+      <td>Hold Me</td>
+      <td>71</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>6jTbKd7VnhCt5qxyWTdak7</td>
+      <td>Karibu</td>
+      <td>2VhoJf6VdIoPnifnThy9UV</td>
+      <td>WITH U</td>
+      <td>Karibu</td>
+      <td>69</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>afro house</td>
+    </tr>
+    <tr>
+      <td>7paRyIC5aRpiiYkiBnT39O</td>
+      <td>Higher Power</td>
+      <td>2ZRQcIgzPCVaT9XKhXZIzh</td>
+      <td>Gryffin</td>
+      <td>Higher Power</td>
+      <td>64</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>66BDXKHZOvvz4CwZovEMwH</td>
+      <td>Sunshine</td>
+      <td>03y4yOxhLk6MDJ1bV424uO</td>
+      <td>Lavern</td>
+      <td>Sunshine</td>
+      <td>64</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>1unlWf6dqVy71XhAdlMjH0</td>
+      <td>Nobody Knows - Belters Only Remix</td>
+      <td>4HJnsUVBubdKJ2aV0sr48u</td>
+      <td>Ape Drums</td>
+      <td>Nobody Knows (Belters Only Remix)</td>
+      <td>64</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>moombahton</td>
+    </tr>
+    <tr>
+      <td>5XIAnKNsdUim7GQsekL3uE</td>
+      <td>Pięknie płyniesz</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Pięknie płyniesz</td>
+      <td>62</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>107Zf6E46a1ipHa3x5Nqlr</td>
+      <td>samoloty</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>tylko haj.</td>
+      <td>61</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>64F1Z2LAsf04V346A75hi1</td>
+      <td>I Ciebie też, bardzo (feat. Daria Zawiałow, Dawid Podsiadło & Vito Bambino)</td>
+      <td>6PE9YfygcKpsaMOqiBx6JG</td>
+      <td>Męskie Granie Orkiestra</td>
+      <td>I Ciebie też, bardzo (feat. Daria Zawiałow, Dawid Podsiadło & Vito Bambino)</td>
+      <td>61</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>34xhlfh5RUmx0AFf8dek9f</td>
+      <td>Souvenir</td>
+      <td>292jMVlKq180yzi8WRaVU6</td>
+      <td>7ari</td>
+      <td>101</td>
+      <td>61</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>0nC5DUHon23N4G3FRY48Ni</td>
+      <td>How Deep Is Your Love</td>
+      <td>2VhoJf6VdIoPnifnThy9UV</td>
+      <td>WITH U</td>
+      <td>How Deep Is Your Love</td>
+      <td>61</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>afro house</td>
+    </tr>
+    <tr>
+      <td>45c9wiUAAYRgbAnBcfPEsk</td>
+      <td>In My Mind</td>
+      <td>03y4yOxhLk6MDJ1bV424uO</td>
+      <td>Lavern</td>
+      <td>In My Mind</td>
+      <td>59</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>4Wx54faWzcpENP6oEST3Fv</td>
+      <td>KOUDOUROU</td>
+      <td>2g8Pu5gVtDpkYGsP3RLepJ</td>
+      <td>Draganov</td>
+      <td>KOUDOUROU X BON COURAGE</td>
+      <td>59</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>6g254BzxAtBlpi9wzDcAJ9</td>
+      <td>nadprzestrzenie</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>tylko haj.</td>
+      <td>58</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>3NWRapFZSlpHXO38LW21rw</td>
+      <td>La leçon particulière</td>
+      <td>03y4yOxhLk6MDJ1bV424uO</td>
+      <td>Lavern</td>
+      <td>La leçon particulière</td>
+      <td>58</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>2aahxM4jGWFWgMzmHpelAR</td>
+      <td>Caught in a Dream</td>
+      <td>6OFZSmtxDquMkX2XZJSN6y</td>
+      <td>PALASTIC</td>
+      <td>Caught in a Dream</td>
+      <td>58</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>deep house</td>
+    </tr>
+    <tr>
+      <td>7jNnW7e1prkMtR7EKsTElp</td>
+      <td>Price</td>
+      <td>6OFZSmtxDquMkX2XZJSN6y</td>
+      <td>PALASTIC</td>
+      <td>Price</td>
+      <td>58</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>deep house</td>
+    </tr>
+    <tr>
+      <td>3JhpsFR2yZhprzqXuzwGqj</td>
+      <td>In Love Today</td>
+      <td>6mDl7lQiLxT0iQ8LYhAlWy</td>
+      <td>Zerb</td>
+      <td>In Love Today</td>
+      <td>58</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>afro house</td>
+    </tr>
+    <tr>
+      <td>5lebcpNhPX5sAPUjKyyYgY</td>
+      <td>All I Want Is You</td>
+      <td>03y4yOxhLk6MDJ1bV424uO</td>
+      <td>Lavern</td>
+      <td>All I Want Is You</td>
+      <td>57</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>5CTWar6EERdWazrPD2giMp</td>
+      <td>Heaven</td>
+      <td>6OFZSmtxDquMkX2XZJSN6y</td>
+      <td>PALASTIC</td>
+      <td>Heaven</td>
+      <td>56</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>deep house</td>
+    </tr>
+    <tr>
+      <td>7iIzan4uOlOeXZ8iE3b91F</td>
+      <td>Wildfire</td>
+      <td>6OFZSmtxDquMkX2XZJSN6y</td>
+      <td>PALASTIC</td>
+      <td>Wildfire</td>
+      <td>56</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>deep house</td>
+    </tr>
+    <tr>
+      <td>6pv5Ajnc2fp12ilnkD5Xrr</td>
+      <td>Like Dat - Ape Drums Remix</td>
+      <td>0iuUN6j3vMee2NUjkFJDF3</td>
+      <td>Danidane</td>
+      <td>Like Dat (Ape Drums Remix)</td>
+      <td>56</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>0UPTkIZR45UaYchMgaVMAs</td>
+      <td>Anything (Ya Ya)</td>
+      <td>4Fx9JQTrRogacwiF4Drhoy</td>
+      <td>Ginton</td>
+      <td>Anything (Ya Ya)</td>
+      <td>56</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>452nTMj51Dt5P1sSn9bZoN</td>
+      <td>Phantom Liberty</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Lata Dwudzieste z kawałkiem</td>
+      <td>55</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>1QMdUrpO1rr0aXtjksMRLs</td>
+      <td>Down To Earth (2012)</td>
+      <td>7dToZgn1tZjiCKeT1y60zw</td>
+      <td>Hunter Plake</td>
+      <td>Down To Earth (2012)</td>
+      <td>55</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>5xan7XL4YNpsAOL7LhXUPb</td>
+      <td>The Darkside</td>
+      <td>6OFZSmtxDquMkX2XZJSN6y</td>
+      <td>PALASTIC</td>
+      <td>The Darkside</td>
+      <td>55</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>deep house</td>
+    </tr>
+    <tr>
+      <td>4vv8wcnT04GHHbUCFBAiHF</td>
+      <td>23 (With Ape Drums)</td>
+      <td>7qYeIN2r4H1kBvr0Gm9Iav</td>
+      <td>Randy Nota Loca</td>
+      <td>Romances de una Nota 2021, Vol.2</td>
+      <td>55</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>3vF2wvLHg3QK1MwqeiUOUb</td>
+      <td>Nobody Knows</td>
+      <td>4HJnsUVBubdKJ2aV0sr48u</td>
+      <td>Ape Drums</td>
+      <td>Nobody Knows</td>
+      <td>54</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>moombahton</td>
+    </tr>
+    <tr>
+      <td>1ZXtVE7Orb5JnUWT06Oqwo</td>
+      <td>Too Heavy</td>
+      <td>1ElV1LPQsKmt6kuUjIBdHG</td>
+      <td>Neon Tide</td>
+      <td>Too Heavy</td>
+      <td>53</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>24wT9mkalLcUIDt9rkpYJJ</td>
+      <td>Let You Down</td>
+      <td>6EB8VE9f7Ut6NOgviN6gDW</td>
+      <td>Dawid Podsiadło</td>
+      <td>Lata Dwudzieste z kawałkiem</td>
+      <td>52</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>0GPtVF1UqnrO0kro91AhyM</td>
+      <td>Koulchi Dial Allah</td>
+      <td>292jMVlKq180yzi8WRaVU6</td>
+      <td>7ari</td>
+      <td>101</td>
+      <td>52</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>3xhWhuMQs7X7nGLwKW0XEE</td>
+      <td>Silence</td>
+      <td>2VhoJf6VdIoPnifnThy9UV</td>
+      <td>WITH U</td>
+      <td>Silence</td>
+      <td>52</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>afro house</td>
+    </tr>
+    <tr>
+      <td>2PkcJdAVlbQCnqoZjYo8JC</td>
+      <td>Try</td>
+      <td>2VhoJf6VdIoPnifnThy9UV</td>
+      <td>WITH U</td>
+      <td>Try</td>
+      <td>52</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>afro house</td>
+    </tr>
+    <tr>
+      <td>5wH0qTIhsK8aSKWs6IAY61</td>
+      <td>In & Out</td>
+      <td>2mNOoqXYY177q7TtuqJL9q</td>
+      <td>Nathan C</td>
+      <td>In & Out</td>
+      <td>51</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>deep house</td>
+    </tr>
+    <tr>
+      <td>4pJF7MrSiXtjthcEqB1aEJ</td>
+      <td>Need A Second</td>
+      <td>2mNOoqXYY177q7TtuqJL9q</td>
+      <td>Nathan C</td>
+      <td>Need A Second</td>
+      <td>51</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>deep house</td>
+    </tr>
+    <tr>
+      <td>6wQaKs1COnCnqPIsIKsccx</td>
+      <td>Fall Back Down</td>
+      <td>6OFZSmtxDquMkX2XZJSN6y</td>
+      <td>PALASTIC</td>
+      <td>Fall Back Down</td>
+      <td>51</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>deep house</td>
+    </tr>
+    <tr>
+      <td>5FyrOaDON6T8au7Xv8M5lr</td>
+      <td>Wad Al Makhazin</td>
+      <td>292jMVlKq180yzi8WRaVU6</td>
+      <td>7ari</td>
+      <td>101</td>
+      <td>51</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>6wpj0XOOx9rJkoNYCv2d7i</td>
+      <td>ENA VRADI</td>
+      <td>1LxWE4LOhnqeaAx2tVUK6p</td>
+      <td>Saske</td>
+      <td>ENA VRADI</td>
+      <td>49</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>4dsbLVnLqTavINHInT4hCo</td>
+      <td>Bittersweet</td>
+      <td>2mNOoqXYY177q7TtuqJL9q</td>
+      <td>Nathan C</td>
+      <td>Bittersweet</td>
+      <td>48</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>deep house</td>
+    </tr>
+    <tr>
+      <td>2yejwvLnmVFtwrMQlaRWgP</td>
+      <td>El Dorado</td>
+      <td>7fQllKIlkVSl9JD1aJ8XYg</td>
+      <td>HotLap</td>
+      <td>El Dorado</td>
+      <td>48</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>5yigqYGqlknz6tQ7b7FGbZ</td>
+      <td>Depression</td>
+      <td>292jMVlKq180yzi8WRaVU6</td>
+      <td>7ari</td>
+      <td>101</td>
+      <td>48</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>4NkHMtDWqqfU9snFt7Ae6j</td>
+      <td>Get Through This</td>
+      <td>2mNOoqXYY177q7TtuqJL9q</td>
+      <td>Nathan C</td>
+      <td>Get Through This</td>
+      <td>47</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>deep house</td>
+    </tr>
+    <tr>
+      <td>4GYO06wf3VU43VzgRevxU2</td>
+      <td>Changes</td>
+      <td>2mNOoqXYY177q7TtuqJL9q</td>
+      <td>Nathan C</td>
+      <td>Changes</td>
+      <td>46</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>deep house</td>
+    </tr>
+    <tr>
+      <td>3mbtXrQE7zVMtm1dHvrWHk</td>
+      <td>PERMISSION TO MOVE</td>
+      <td>4lAkDxZ9sgjZD3mDPRgM4B</td>
+      <td>UVITA</td>
+      <td>PERMISSION TO MOVE</td>
+      <td>45</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>afro house, afro tech, melodic house</td>
+    </tr>
+    <tr>
+      <td>7Cl5ITyEbFN7f2Y3YzfGTY</td>
+      <td>No Way Out</td>
+      <td>6qrKiEKVVelbXJa8HwchwO</td>
+      <td>OSFUR</td>
+      <td>No Way Out</td>
+      <td>44</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>3wgC5bBD5Iq8iEubEBkqZx</td>
+      <td>Wale Wale (feat. Sofiya Nzau) [WITH U Remix Radio Edit]</td>
+      <td>5tYaRVYbV1anmzyxqMVdHi</td>
+      <td>TRESOR</td>
+      <td>New title: Wale Wale (feat. Sofiya Nzau) [WITH U Remix]</td>
+      <td>43</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>4N70Hwcdft6RxkdUzkX70s</td>
+      <td>Through This</td>
+      <td>75jzFWGzvtNIwV7xoAp0wg</td>
+      <td>Julien Fade</td>
+      <td>Through This</td>
+      <td>42</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>deep house</td>
+    </tr>
+    <tr>
+      <td>4uKulth6B1icBKdUQlQZhd</td>
+      <td>More Than Ever (Umbrella)</td>
+      <td>0PX2pq6qcOfKp3NQOJMGvz</td>
+      <td>LEDUC</td>
+      <td>More Than Ever (Umbrella)</td>
+      <td>41</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>3R6SkVU0glY6NQxBdEQK0R</td>
+      <td>Pieces</td>
+      <td>6qrKiEKVVelbXJa8HwchwO</td>
+      <td>OSFUR</td>
+      <td>Pieces</td>
+      <td>41</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>6fcze2Re7NG53tNsEF3WXi</td>
+      <td>AGAMA</td>
+      <td>6qrKiEKVVelbXJa8HwchwO</td>
+      <td>OSFUR</td>
+      <td>AGAMA EP</td>
+      <td>41</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2KuQ9Au4R0WasDJ8fDRHxT</td>
+      <td>Shelter</td>
+      <td>7fQllKIlkVSl9JD1aJ8XYg</td>
+      <td>HotLap</td>
+      <td>Shelter</td>
+      <td>40</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>5YFCJLeAFafkrCTTNalrdt</td>
+      <td>Bad Ones</td>
+      <td>75jzFWGzvtNIwV7xoAp0wg</td>
+      <td>Julien Fade</td>
+      <td>Bad Ones</td>
+      <td>38</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>deep house</td>
+    </tr>
+    <tr>
+      <td>094ytaIC90FNjxPFpdgcHP</td>
+      <td>What If We Let Go (feat. Sam Welch)</td>
+      <td>0PX2pq6qcOfKp3NQOJMGvz</td>
+      <td>LEDUC</td>
+      <td>What If We Let Go (feat. Sam Welch)</td>
+      <td>37</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>4BPoI4ettn5McqYyo3iQlg</td>
+      <td>Jump - Julien Fade Remix</td>
+      <td>4KX7yEwPVJikSK6wLjgUJF</td>
+      <td>SAY SAY</td>
+      <td>Jump (Julien Fade Remix)</td>
+      <td>33</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2ftN0Aikomqttb2hBJUHSW</td>
+      <td>Give Me Your Love</td>
+      <td>0PX2pq6qcOfKp3NQOJMGvz</td>
+      <td>LEDUC</td>
+      <td>Give Me Your Love</td>
+      <td>31</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>6sng1g313Na1A1jjcqtSqg</td>
+      <td>Overdrive (feat. Jordan Jade)</td>
+      <td>75jzFWGzvtNIwV7xoAp0wg</td>
+      <td>Julien Fade</td>
+      <td>Overdrive (feat. Jordan Jade)</td>
+      <td>31</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>deep house</td>
+    </tr>
+    <tr>
+      <td>4naOLliMqRMOcfEOBJ1jAP</td>
+      <td>Zauberland</td>
+      <td>6HU4BOe89xyKTjx5uPT3Gg</td>
+      <td>Pazoo</td>
+      <td>Zauberland</td>
+      <td>31</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>2jTmrwt6SiQ3yvFg2BVqw3</td>
+      <td>Siyaphakama!</td>
+      <td>6u1e1yxbcOzQ96mQl2L6ta</td>
+      <td>MUPHUS</td>
+      <td>Siyaphakama!</td>
+      <td>30</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>hypertechno</td>
+    </tr>
+    <tr>
+      <td>4IC7K23iJBGfUsu2oEwZ5T</td>
+      <td>Letzte Nacht!</td>
+      <td>6u1e1yxbcOzQ96mQl2L6ta</td>
+      <td>MUPHUS</td>
+      <td>Letzte Nacht!</td>
+      <td>29</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>hypertechno</td>
+    </tr>
+    <tr>
+      <td>7hthlUwN9J31cP7XVMPML1</td>
+      <td>Light Me Up</td>
+      <td>0PX2pq6qcOfKp3NQOJMGvz</td>
+      <td>LEDUC</td>
+      <td>Light Me Up</td>
+      <td>28</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>stutter house</td>
+    </tr>
+    <tr>
+      <td>6bBFT3o03EUiwh9izY8SnF</td>
+      <td>Wait for You</td>
+      <td>6u1e1yxbcOzQ96mQl2L6ta</td>
+      <td>MUPHUS</td>
+      <td>Wait for You</td>
+      <td>15</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>hypertechno</td>
+    </tr>
+    <tr>
+      <td>63GVWi6kSsHgolSLqxp2tV</td>
+      <td>Iris</td>
+      <td>7t9AgfG4UBcFL6lEkfQi6h</td>
+      <td>Buamz</td>
+      <td>Iris</td>
+      <td>14</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>6oxZG0GdwFctktW60tnzX8</td>
+      <td>Ghost Of You - LEDUC Remix</td>
+      <td>5SOSqzQyhsHTTuxAMGPkaO</td>
+      <td>BUTTER</td>
+      <td>Ghost Of You (LEDUC Remix)</td>
+      <td>13</td>
+      <td>seed_top</td>
+      <td>prefs</td>
+      <td>False</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+    </body></html>
+    

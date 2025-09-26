@@ -1,0 +1,182 @@
+{
+  "seeds": {
+    "artist_ids": [
+      "5ReEaUoPEJMxR0hefo2QZ4",
+      "48aqzGnSFeO0t4FKTGmq72",
+      "25rSPSJSC2g85FSgBuV8SE",
+      "5oJvmyeWzyeahRtjup3Oys",
+      "2KcuDXfSU3CCEuC85IO8e6"
+    ],
+    "genres": [
+      "slap house",
+      "stutter house",
+      "deep house",
+      "afro house",
+      "house"
+    ]
+  },
+  "top_artists": [
+    {
+      "artist_id": "5ReEaUoPEJMxR0hefo2QZ4",
+      "artist_name": "FLX",
+      "score": 11.399999999999999
+    },
+    {
+      "artist_id": "48aqzGnSFeO0t4FKTGmq72",
+      "artist_name": "Kastuvas",
+      "score": 7.8
+    },
+    {
+      "artist_id": "25rSPSJSC2g85FSgBuV8SE",
+      "artist_name": "DV7",
+      "score": 6.5
+    },
+    {
+      "artist_id": "5oJvmyeWzyeahRtjup3Oys",
+      "artist_name": "AVAION",
+      "score": 6.4
+    },
+    {
+      "artist_id": "2KcuDXfSU3CCEuC85IO8e6",
+      "artist_name": "Kiki",
+      "score": 5.2
+    },
+    {
+      "artist_id": "6EB8VE9f7Ut6NOgviN6gDW",
+      "artist_name": "Dawid Podsiadło",
+      "score": 5.0
+    },
+    {
+      "artist_id": "2CpLIMBoE2ZzyY3ZBCRZ7j",
+      "artist_name": "BUNT.",
+      "score": 4.4
+    },
+    {
+      "artist_id": "6KJPsGYJN54GllYOKTleaj",
+      "artist_name": "Aaron Hibell",
+      "score": 4.4
+    },
+    {
+      "artist_id": "3xksDFio6oCdauPR6UE4Aj",
+      "artist_name": "Danell Arma",
+      "score": 3.9000000000000004
+    },
+    {
+      "artist_id": "3hnbNJJnN1jFk3MmBvcn9Z",
+      "artist_name": "Soda",
+      "score": 3.9000000000000004
+    },
+    {
+      "artist_id": "0418xhpb0MLi9OfTGiTRas",
+      "artist_name": "FRHAD",
+      "score": 3.9000000000000004
+    },
+    {
+      "artist_id": "3YGQcI92cOYtFdYLHhTpax",
+      "artist_name": "Xd",
+      "score": 3.9000000000000004
+    },
+    {
+      "artist_id": "6jo2wtsxA05csbowWjnKg0",
+      "artist_name": "Gadyca",
+      "score": 3.9000000000000004
+    },
+    {
+      "artist_id": "4ME20XT9IP5JOpqoIGQ6Js",
+      "artist_name": "Naarly",
+      "score": 3.8000000000000003
+    },
+    {
+      "artist_id": "61lyPtntblHJvA7FMMhi7E",
+      "artist_name": "Duke Dumont",
+      "score": 3.8000000000000003
+    }
+  ],
+  "top_genres": [
+    {
+      "genre": "slap house",
+      "score": 61.19999999999995
+    },
+    {
+      "genre": "stutter house",
+      "score": 31.799999999999994
+    },
+    {
+      "genre": "deep house",
+      "score": 25.799999999999997
+    },
+    {
+      "genre": "afro house",
+      "score": 16.6
+    },
+    {
+      "genre": "house",
+      "score": 15.599999999999998
+    },
+    {
+      "genre": "melodic house",
+      "score": 13.2
+    },
+    {
+      "genre": "g-house",
+      "score": 13.000000000000002
+    },
+    {
+      "genre": "hypertechno",
+      "score": 9.2
+    },
+    {
+      "genre": "afro tech",
+      "score": 9.0
+    },
+    {
+      "genre": "drum and bass",
+      "score": 7.8
+    },
+    {
+      "genre": "melodic techno",
+      "score": 4.0
+    },
+    {
+      "genre": "progressive house",
+      "score": 4.0
+    },
+    {
+      "genre": "tech house",
+      "score": 3.8000000000000003
+    },
+    {
+      "genre": "3 step",
+      "score": 3.2
+    },
+    {
+      "genre": "latin house",
+      "score": 3.2
+    },
+    {
+      "genre": "tribal house",
+      "score": 3.2
+    },
+    {
+      "genre": "frenchcore",
+      "score": 2.6
+    },
+    {
+      "genre": "techengue",
+      "score": 2.2
+    },
+    {
+      "genre": "edm",
+      "score": 2.2
+    },
+    {
+      "genre": "trance",
+      "score": 2.2
+    }
+  ],
+  "counts": {
+    "tracks": 136,
+    "unique_artists": 92,
+    "unique_genres": 34
+  }
+}
